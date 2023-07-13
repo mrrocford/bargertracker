@@ -15,7 +15,7 @@ CryptoCompare API: Used to fetch cryptocurrency data.
 Goerli Test Network: We use the Goerli Test Network for testing Ethereum transactions.
 Installation and Running
 Install Node.js and npm.
-Clone this repository: git clone https://github.com/your-username/your-repository.git.
+Clone this repository: git clone https://github.com/mrrocford/bargertracker.git .
 Install dependencies: npm install.
 Run the app: npm start.
 Open a web browser and go to http://localhost:3001.
