@@ -1,46 +1,28 @@
-# Getting Started with Create React App
+Your App Name
+Description
+This application is a cryptocurrency tracker that allows users to view current prices of various cryptocurrencies, add cryptocurrencies to favorites, check Ethereum balance and perform Ethereum transactions between two wallet addresses.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Design Decisions
+Using styled-components: The use of the styled-components library for styling our components helps maintain clean and reusable code. Each component has its own declared style which can be easily modified and reused across the app.
 
-## Available Scripts
+Responsive Design: Our app is designed with principles of Responsive Design, ensuring an optimal user experience on various devices including mobile devices.
 
-In the project directory, you can run:
+Flexbox Layout: The use of Flexbox for layout creation enables us to easily manipulate the placement and alignment of items regardless of their original size and order in the DOM.
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Libraries and APIs
+Web3: The Web3.js library is used for interacting with the Ethereum blockchain, including balance check and transaction execution.
+CryptoCompare API: Used to fetch cryptocurrency data.
+Goerli Test Network: We use the Goerli Test Network for testing Ethereum transactions.
+Installation and Running
+Install Node.js and npm.
+Clone this repository: git clone https://github.com/your-username/your-repository.git.
+Install dependencies: npm install.
+Run the app: npm start.
+Open a web browser and go to http://localhost:3001.
+Usage
+Navigate to the main page of the app.
+Here you'll find a list of all cryptocurrencies. You can select one to get more detailed information.
+You can also add a cryptocurrency to favorites by clicking on the "Add to Favorites" button. This cryptocurrency will be saved in your browser's local storage.
+You can remove a cryptocurrency from favorites by clicking on the "Remove from Favorites" button.
+To check Ethereum balance, go to the "Ethereum Balance Checker" page and enter an Ethereum wallet address.
+To perform an Ethereum transaction, go to the "Ethereum Transaction" page and enter the source and target Ethereum addresses, and the transaction amount.
