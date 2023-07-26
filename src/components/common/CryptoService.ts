@@ -1,8 +1,13 @@
 import axios from 'axios';
 
+const ApiKey = process.env.REACT_APP_API_KEY_SERV;
+
 export default class CryptoService {
+    
+
+
     private static instance = new CryptoService();
-    private apiKey: string = 'c9282cbd947195bd29138eb909a44c9654238a0e983f31139b70fba848507048';
+    private apiKey = ApiKey;
     private apiUrl: string = 'https://min-api.cryptocompare.com/data';
 
     private constructor() { }
