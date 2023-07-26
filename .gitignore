@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 .gitignore: /.vscode
+.gitignore: /.key.env
 
 # testing
 /coverage
