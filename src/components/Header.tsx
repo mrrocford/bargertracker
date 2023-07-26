@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import Badger from "../assets/images/badger.png"
 import { IoIosHome, IoIosBookmark, IoIosRocket, IoIosWallet, IoIosLogIn} from "react-icons/io";
 import { Link } from "react-router-dom";
 import LogIn from "./common/LogIn";
-
-
 
 
 
