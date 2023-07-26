@@ -1,4 +1,3 @@
-
 import { Routes, Route } from 'react-router-dom';
 import FavoritesPage from './common/FavoritesPage';
 import Wrapper from './Wrapper';

@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import Facebook from '../assets/logo-facebook.svg';
 import Instagram from '../assets/logo-instagram.svg';
