@@ -95,6 +95,7 @@ export interface CryptoData {
         };
 }
 
+
 const CryptoTracker: React.FC = () => {
 
     const [cryptoData, setCryptoData] = useState<CryptoData | null>(null);
@@ -162,6 +163,8 @@ const CryptoTracker: React.FC = () => {
                 {cryptoKeys.map((cryptoKey) => {
                 const { PRICE, CHANGEPCT24HOUR } = cryptoData[cryptoKey].USD;
 
+                const formattedChangePct24Hour = parseFloat(CHANGEPCT24HOUR).toFixed(4);
+
                 if (selectedCryptoKey && cryptoKey !== selectedCryptoKey) {
                     return null;
                 }
@@ -171,7 +174,7 @@ const CryptoTracker: React.FC = () => {
                     <TableRow key={cryptoKey}>
                     <TableCell onClick={() => handleCryptoSelection(cryptoKey)}><Button>{cryptoKey}</Button></TableCell>
                     <TableCell>{PRICE}$</TableCell>
-                    <TableCell>{CHANGEPCT24HOUR}%</TableCell>
+                    <TableCell>{formattedChangePct24Hour}%</TableCell>
                     <TableCell>
                                     {favorites.some((favorite: { id: string; }) => favorite.id === cryptoKey) ? (
                         <Button onClick={() => removeFromFavorites(cryptoKey)}>Remove</Button>
