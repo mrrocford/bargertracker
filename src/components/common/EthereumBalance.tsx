@@ -1,4 +1,3 @@
-// EthereumBalance.tsx
 import React, { useState } from 'react';
 import web3 from './CryptoWeb';
 import styled from 'styled-components';
