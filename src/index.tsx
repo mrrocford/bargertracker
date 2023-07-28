@@ -11,5 +11,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-reportWebVitals(console.log);
-
+reportWebVitals(console.log); //The line is used to send performance metrics (LCP, CLS, FID, and others) to Google Analytics or other analytics tools.
