@@ -64,8 +64,9 @@ const EtherTransfer: React.FC = () => {
 
         const signedTx = await web3.eth.accounts.signTransaction(tx, privateKey); // замініть на ваш приватний ключ
         const result = await web3.eth.sendSignedTransaction(signedTx.rawTransaction as string);
-
+        // Log the result of the transaction.
         console.log(result);
+        // If there's an error during the transaction, log the error.
         } catch (error) {
         console.error(error);
         }
