@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-
+import localStorageService from './LocalStorageService';
 
 
 const FavoritesStyled = styled.div`
@@ -42,10 +42,13 @@ const Button = styled.button`
 `;
 
 const FavoritesPage = () => {
-    const [favorites, setFavorites] = useState(() => JSON.parse(localStorage.getItem('favorites') || '[]'));
+    const [favorites, setFavorites] = useState<Array<any>>(() => {
+        const initialFavorites = localStorageService.getItem('favorites');
+        return Array.isArray(initialFavorites) ? initialFavorites : [];
+        });
 
     useEffect(() => {
-        const updateFavorites = () => setFavorites(JSON.parse(localStorage.getItem('favorites') || '[]'));
+        const updateFavorites = () => setFavorites(localStorageService.getItem('favorites') || '[]');
         
         window.addEventListener('storage', updateFavorites);  // Listen for changes in localStorage
 
@@ -57,7 +60,7 @@ const FavoritesPage = () => {
     const removeFromFavorites = (id: string) => {
         const updatedFavorites = favorites.filter((favorite: { id: string; }) => favorite.id !== id);
         setFavorites(updatedFavorites);  // Update the state
-        localStorage.setItem('favorites', JSON.stringify(updatedFavorites));  // Update the localStorage
+        localStorageService.setItem('favorites', updatedFavorites);  // Update the localStorage
     }
 
     return (
