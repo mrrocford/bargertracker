@@ -48,10 +48,16 @@ const EtherTransfer: React.FC = () => {
         const gasPrice = await web3.eth.getGasPrice();
         const value = web3.utils.toWei(amount, 'ether');
 
+        const gasEstimate = await web3.eth.estimateGas({
+            from: fromAddress,
+            to: toAddress,
+            value: value,
+        });
+
         const tx = {
             nonce: '0x' + nonce.toString(16),
             gasPrice: '0x' + gasPrice.toString(16),
-            gasLimit: '0x5208',
+            gasLimit: '0x' + gasEstimate.toString(16),
             to: toAddress,
             value: '0x' + parseInt(value).toString(16),
         };
