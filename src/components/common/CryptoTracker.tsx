@@ -3,6 +3,7 @@ import CryptoService from './CryptoService';
 import styled from 'styled-components';
 import Loader from './Loader';
 import CryptoCard from './CryptoCard';
+import localStorageService from './LocalStorageService';
 
 
 const TableWrapper = styled.div`
@@ -100,7 +101,10 @@ const CryptoTracker: React.FC = () => {
 
     const [cryptoData, setCryptoData] = useState<CryptoData | null>(null);
     const [selectedCryptoKey, setSelectedCryptoKey] = useState<string | null>(null);
-    const [favorites, setFavorites] = useState(() => JSON.parse(localStorage.getItem('favorites') || '[]'));
+    const [favorites, setFavorites] = useState<Array<any>>(() => {
+        const initialFavorites = localStorageService.getItem('favorites');
+        return Array.isArray(initialFavorites) ? initialFavorites : [];
+    });
 
     useEffect(() => {
         const fetchData = async () => {
@@ -133,17 +137,23 @@ const CryptoTracker: React.FC = () => {
             name: cryptoKey,
             price: cryptoData?.[cryptoKey]?.USD?.PRICE || '',
         };
-        if (!favorites.some((favorite: { id: string; }) => favorite.id === crypto.id)) {
-            const updatedFavorites = [...favorites, crypto];
+        const currentFavorites = localStorageService.getItem('favorites');
+        if (Array.isArray(currentFavorites) && !currentFavorites.some((favorite: { id: string }) => favorite.id === crypto.id)) {
+            const updatedFavorites = [...currentFavorites, crypto];
             setFavorites(updatedFavorites);
-            localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+            localStorageService.setItem('favorites', updatedFavorites); // Зберігайте в localStorageService, а не localStorage
         }
     };
+
     const removeFromFavorites = (cryptoKey: string) => {
-        const updatedFavorites = favorites.filter((favorite: { id: string; }) => favorite.id !== cryptoKey);
-        setFavorites(updatedFavorites);
-        localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+        const currentFavorites = localStorageService.getItem('favorites');
+        if (Array.isArray(currentFavorites)) {
+            const updatedFavorites = currentFavorites.filter((favorite: { id: string }) => favorite.id !== cryptoKey);
+            setFavorites(updatedFavorites);
+            localStorageService.setItem('favorites', updatedFavorites); // Зберігайте в localStorageService, а не localStorage
+        }
     };
+
 
 
 
@@ -176,7 +186,8 @@ const CryptoTracker: React.FC = () => {
                     <TableCell>{PRICE}$</TableCell>
                     <TableCell>{formattedChangePct24Hour}%</TableCell>
                     <TableCell>
-                                    {favorites.some((favorite: { id: string; }) => favorite.id === cryptoKey) ? (
+                                    {Array.isArray(favorites) &&
+                                    favorites.some((favorite: { id: string; }) => favorite.id === cryptoKey) ? (
                         <Button onClick={() => removeFromFavorites(cryptoKey)}>Remove</Button>
                             ) : (
                         <Button onClick={() => addToFavorites(cryptoKey)}>Add to Favorites</Button>
