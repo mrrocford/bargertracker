@@ -1,5 +1,5 @@
 import React from 'react';
-import { CryptoData } from './CryptoTracker';
+import { CryptoData } from './CryptoData';
 import styled from "styled-components";
 
 
@@ -35,7 +35,7 @@ const Button = styled.button`
 interface CryptoCardProps {
     cryptoData: CryptoData | null;
     selectedCryptoKey: string | null;
-    setSelectedCryptoKey: (key: string | null) => void;
+    setSelectedCryptoKey: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 
@@ -45,14 +45,14 @@ const CryptoCard: React.FC<CryptoCardProps> = ({ cryptoData, selectedCryptoKey, 
         };
 
     if (selectedCryptoKey && cryptoData && cryptoData[selectedCryptoKey]) {
-        const { PRICE, CHANGEPCT24HOUR, VOLUME24HOURTO } = cryptoData[selectedCryptoKey].USD;
+        const { PRICE, TOPTIERVOLUME24HOUR, VOLUME24HOURTO } = cryptoData[selectedCryptoKey].USD;
 
         return (
         <CryptoCardWrapper>
             <CryptoCardContainer>
                 <TitleCard>{selectedCryptoKey}</TitleCard>
                 <p>Price: {PRICE}$</p>
-                <p>24h Change: {CHANGEPCT24HOUR}%</p>
+                <p>TOPTIERVOLUME24HOUR: {TOPTIERVOLUME24HOUR}%</p>
                 <p>24h Volume: {VOLUME24HOURTO}</p>
                 <Button onClick={handleCloseCryptoCard}>Close</Button>
             </CryptoCardContainer>
