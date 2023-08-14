@@ -4,8 +4,6 @@ const ApiKey = process.env.REACT_APP_API_KEY_SERV;
 
 export default class CryptoService {
     
-
-
     private static instance = new CryptoService();
     private apiKey = ApiKey;
     private apiUrl: string = 'https://min-api.cryptocompare.com/data';
